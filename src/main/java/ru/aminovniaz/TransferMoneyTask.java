@@ -32,7 +32,7 @@ public class TransferMoneyTask implements Runnable {
             try {
                 Thread.sleep(sleepTime);
             } catch (InterruptedException e) {
-                LOGGER.error(String.format("%s. Thread was interrupted", Thread.currentThread().getName()));
+                LOGGER.error(String.format("%s was interrupted.", Thread.currentThread().getName()));
                 throw new RuntimeException(e);
             }
 
