@@ -58,13 +58,8 @@ public class TransferMoneyTask implements Runnable {
             int totalMoney = accountList.stream().mapToInt(Account::getMoney).sum();
             String balances = accountList.stream().map(a -> a.getId() + "=" + a.getMoney() + " ").collect(Collectors.joining());
 
-            LOGGER.info(String.format("%s. №%s. Transfer money: %s from %s to %s. Total money: %s. Balances: %s.", Thread.currentThread().getName(), counter, money, a1.getId(), a2.getId(), totalMoney, balances));
-            System.out.printf("%s. №%s. Transfer money: %s from %s to %s. Total money: %s. Balances: %s.\n", Thread.currentThread().getName(), counter, money, a1.getId(), a2.getId(), totalMoney, balances);
-
-//            int totalMoney = accountList.stream().mapToInt(Account::getMoney).sum();
-//            String balances = accountList.stream().map(a -> a.getId() + "=" + a.getMoney() + " ").collect(Collectors.joining());
-//            LOGGER.info(String.format("%s. Total money: %s. Balances: %s", Thread.currentThread().getName(), totalMoney, balances));
-            //System.out.printf("%s. Total money: %s. Balances: %s\n", Thread.currentThread().getName(), totalMoney, balances);
+            LOGGER.info(String.format("%s. №%s transfer money: %s from %s to %s. Total money: %s. Balances: %s.", Thread.currentThread().getName(), counter, money, a1.getId(), a2.getId(), totalMoney, balances));
+            System.out.printf("%s. №%s transfer money: %s from %s to %s. Total money: %s. Balances: %s.\n", Thread.currentThread().getName(), counter, money, a1.getId(), a2.getId(), totalMoney, balances);
 
             if (counter.get() >= TRANSACTION_COUNT) {
                 break;

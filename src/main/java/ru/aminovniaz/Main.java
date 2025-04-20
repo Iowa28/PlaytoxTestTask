@@ -17,16 +17,18 @@ public class Main {
     public static void main(String[] args) {
         final Logger LOGGER = Logger.getLogger(Main.class);
 
+        final int accountCount = 4;
+        final int threadCount = 2;
+
         List<Account> accountList = new CopyOnWriteArrayList<>();
-        accountList.add(new Account());
-        accountList.add(new Account());
-        accountList.add(new Account());
-        accountList.add(new Account());
+        for (int i = 0; i < accountCount; i++) {
+            accountList.add(new Account());
+        }
 
         AtomicInteger counter = new AtomicInteger();
-        Thread thread1 = new Thread(new TransferMoneyTask(accountList, counter, LOGGER));
-        thread1.start();
-        Thread thread2 = new Thread(new TransferMoneyTask(accountList, counter, LOGGER));
-        thread2.start();
+        for (int i = 0; i < threadCount; i++) {
+            Thread thread = new Thread(new TransferMoneyTask(accountList, counter, LOGGER));
+            thread.start();
+        }
     }
 }
